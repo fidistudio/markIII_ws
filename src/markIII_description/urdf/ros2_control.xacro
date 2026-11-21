@@ -1,43 +1,40 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <ros2_control name="GazeboSimSystem" type="system">
+    <xacro:macro name="markIII_ros2_control" params="hardware_plugin">
 
-        <hardware>
-            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-        </hardware>
+        <ros2_control name="MarkIIISystem" type="system">
 
-        <joint name="left_wheel_joint">
-            <command_interface name="velocity">
-                <param name="min">-10</param>
-                <param name="max">10</param>
-            </command_interface>
+            <hardware>
+                <plugin>${hardware_plugin}</plugin>
+            </hardware>
 
-            <state_interface name="position"/>
-            <state_interface name="velocity"/>
-        </joint>
+            <joint name="left_wheel_joint">
 
-        <joint name="right_wheel_joint">
-            <command_interface name="velocity">
-                <param name="min">-10</param>
-                <param name="max">10</param>
-            </command_interface>
+                <command_interface name="velocity">
+                    <param name="min">-10</param>
+                    <param name="max">10</param>
+                </command_interface>
 
-            <state_interface name="position"/>
-            <state_interface name="velocity"/>
-        </joint>
+                <state_interface name="position" />
+                <state_interface name="velocity" />
 
-    </ros2_control>
+            </joint>
 
-    <gazebo>
-        <plugin filename="libgz_ros2_control-system.so"
-                name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <joint name="right_wheel_joint">
 
-            <parameters>
-                $(find description_files)/config/my_controllers.yaml
-            </parameters>
+                <command_interface name="velocity">
+                    <param name="min">-10</param>
+                    <param name="max">10</param>
+                </command_interface>
 
-        </plugin>
-    </gazebo>
+                <state_interface name="position" />
+                <state_interface name="velocity" />
+
+            </joint>
+
+        </ros2_control>
+
+    </xacro:macro>
 
 </robot>

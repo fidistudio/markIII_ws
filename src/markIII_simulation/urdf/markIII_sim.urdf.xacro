@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="markIII">
+
+    <xacro:arg name="controllers_file"
+               default="$(find markIII_simulation)/config/my_controllers.yaml"/>
+
+    <!-- Descripción física -->
+    <xacro:include filename="$(find markIII_description)/urdf/markIII.urdf.xacro"/>
+
+    <!-- Hardware simulado: solo cambia el plugin -->
+    <xacro:markIII_ros2_control hardware_plugin="gz_ros2_control/GazeboSimSystem"/>
+
+    <!-- Cosas específicas de Gazebo -->
+    <xacro:include filename="gazebo_lidar.xacro"/>
+    <xacro:include filename="gazebo_control.xacro"/>
+    <xacro:include filename="gazebo_surfaces.xacro"/>
+
+</robot>

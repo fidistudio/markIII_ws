@@ -144,10 +144,4 @@
             <origin xyz="0 0 0" rpy="0 0 0" />
         </xacro:inertial_sphere>
     </link>
-
-    <gazebo reference="caster_wheel_link">
-        <mu1>0.001</mu1>
-        <mu2>0.001</mu2>
-    </gazebo>
-
 </robot>
